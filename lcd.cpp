@@ -2,6 +2,7 @@
 #include <LiquidCrystal.h>
 
 #include "lcd.h"
+#include "Lock.h"
 #include "keypad_x.h"
 
 LiquidCrystal lcd(LCD_PIN1, LCD_PIN2, LCD_PIN3, LCD_PIN4, LCD_PIN5, LCD_PIN6);
@@ -32,17 +33,32 @@ void lcdLockScreen() {
   lcdPromptCode();
 }
 
+void lcdFailScreen() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Incorrect code!");
+}
+
 void lcdPromptCode() {
   lcd.setCursor(5, 1);
   lcd.print("[____]");
+  
+  Lock session();
+  session->startSession();
 
   String result = "";
   while (result.length() < 4) {
-   // char key = keypad.getKey();
-    char key = '0';
+    char key = keypad.getKey();
     if (lcdValidateKey(key)) {
       lcd.print('*');
       result += key;
     }
+  }
+
+  bool result = session->enterCode(result);
+  if (!result) {
+    lcdFailScreen();
+    delay(3000);
+    lcdLockScreen();
   }
 }

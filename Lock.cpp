@@ -12,7 +12,7 @@ bool Lock::startSession() {
   return true;
 }
 
-bool Lock::enterCode(int code) {
+bool Lock::enterCode(String code) {
   if (!sessionActive) {
     return false;
   }

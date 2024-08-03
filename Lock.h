@@ -5,7 +5,7 @@ class Lock {
 public:
   Lock();
   bool startSession();
-  bool enterCode(int code);
+  bool enterCode(String code);
 
 private:
   static const int LOCK_CODE = 1234;
