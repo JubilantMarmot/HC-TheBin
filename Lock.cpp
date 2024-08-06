@@ -1,5 +1,7 @@
 #include "Lock.h"
 
+#include <Arduino.h>
+
 Lock::Lock() : tries(0), sessionActive(false) {}
 
 bool Lock::startSession() {

@@ -2,7 +2,7 @@
 #include <Servo.h>
 
 #include "lcd.h"
-#include "servo.h"
+#include "srvo.h"
 
 void setup() {
   setupServo();
