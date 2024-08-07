@@ -8,33 +8,20 @@ from math import floor
 from utime import sleep
 import time
 
+lock_system = lock.LockSystem()
+
 def Welcome():
   screen.Write("Lock initialized")
   sleep(0.5)
-  lock.Lock()
+  lock_system.lock()
 
 Welcome()
 
 lastKey = time.time()
 while True:
     key = keypad.GetKey()
-    if key is None:
-        current = time.time()
-        remaining = floor(current - lastKey)
+    if key:
+      lock_system.prompt_for_code()
 
-        screen.Write("[LOCKED]")
-    else:
-        if lock.PromptForCode():
-            screen.Write("Press key to")
-            screen.Write("lock", False, 0, 10)
-            screen.Write(f"Auto-lock: {remaining}s", False, 0, 20)
-
-            key = keypad.GetKey()
-            if key is not None:
-                Lock()
-        else:
-            # System locked after max retries
-            screen.Write("System locked. Waiting...")
-            sleep(lock.RETRY_WAIT_TIME)
-
-    sleep(1)
+    lock_system.check_autolock()
+    sleep(0.5)
