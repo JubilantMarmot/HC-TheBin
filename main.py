@@ -28,6 +28,7 @@ while True:
       if lock_system.locked:
         lock_system.prompt_for_code(key)
       else:
-        lock_system.lock()
+        if key == "#":
+          lock_system.lock()
 
     sleep(0.5)

@@ -34,10 +34,10 @@ class LockSystem:
     screen.Write("Unlocking...")
     buzzer.UnlockSound()
     servo.Unlock()
-    screen.Write("[UNLOCKED]", True, 20)
-    screen.Write("[#] to lock", False, 12, 10)
-    screen.Write("Autolock after", False, 10, 25)
-    screen.Write(f"{AUTOLOCK_TIME}s", False, 45, 35)
+    screen.Write("[UNLOCKED]", True, None, None, 0, -15)
+    screen.Write("[#] to lock", False, None, None, 0, 5)
+    screen.Write("Autolock after", False, None, None, 0, 15)
+    screen.Write(f"{AUTOLOCK_TIME}s", False, None, None, 0, 25)
 
     self.locked = False
     self.locking = False
@@ -62,17 +62,19 @@ class LockSystem:
     self.u()
 
   def start_lock_prompt(self):
-    screen.Write("Press key to")
-    screen.Write("enter code", False, 0, 10)
+    screen.Write("[LOCKED]", True, None, None, 0, -15)
+
+    screen.Write("Press key to", False, None, None, 0, -5)
+    screen.Write("enter code", False, None, None, 0, 5)
 
   def screen_code_prompt(self):
-    screen.Write("Enter code:")
+    screen.Write("Enter code:", True, None, None, 0, -5)
     prompt = "[" + "*" * len(self.entered_code) + "_" * (6 - len(self.entered_code)) + "]"
-    screen.Write(prompt, False, 0, 10)
+    screen.Write(prompt, False, None, None, 0, 5)
 
   def display_autolock_countdown(self, remaining):
     if remaining <= 0:
-      screen.Write("Autolocking!", False, 30, 50)
+      screen.Write("Autolocking!")
       sleep(1)
 
   def check_autolock(self):
@@ -98,11 +100,15 @@ class LockSystem:
         return True
       else:
         self.attempts += 1
-        screen.Write("Incorrect code!")
-        screen.Write(f"Attempt {self.attempts}/{MAX_TRIES}", False, 0, 10)
+        screen.Write("Incorrect code!", True, None, None, 0, -5)
+        screen.Write(f"Attempt {self.attempts}/{MAX_TRIES}", False, None, None, 0, 5)
+
         self.entered_code = ""
 
         buzzer.InvalidSound()
+        if self.attempts == MAX_TRIES:
+          sleep(RETRY_WAIT_TIME)
+
         sleep(3)
         self.screen_code_prompt()
     elif key == "*":

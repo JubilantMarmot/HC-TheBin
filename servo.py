@@ -1,8 +1,8 @@
 from machine import Pin, PWM
+import pins
 
-SERVO_PIN = 14
-SERVO_UNLOCK = 90
-SERVO_LOCK = 0
+SERVO_UNLOCK = 0
+SERVO_LOCK = 90
 
 MIN_DUTY = 1802
 MAX_DUTY = 7864
@@ -11,7 +11,7 @@ def angle_to_duty(angle):
 
 #####
 
-servo = PWM(Pin(SERVO_PIN))
+servo = PWM(Pin(pins.SERVO))
 servo.freq(50)
 
 def set_servo_angle(angle):
