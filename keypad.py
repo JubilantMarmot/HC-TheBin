@@ -12,8 +12,19 @@ KEYS = [
 ROW_PINS = [6, 7, 8, 9]
 COL_PINS = [10, 11, 12, 13]
 
-row_pins = [Pin(ROW_PINS[0], Pin.OUT), Pin(ROW_PINS[1], Pin.OUT), Pin(ROW_PINS[2], Pin.OUT), Pin(ROW_PINS[3], Pin.OUT)]
-col_pins = [Pin(COL_PINS[0], Pin.IN, Pin.PULL_DOWN), Pin(COL_PINS[1], Pin.IN, Pin.PULL_DOWN), Pin(COL_PINS[3], Pin.IN, Pin.PULL_DOWN), Pin(COL_PINS[3], Pin.IN, Pin.PULL_DOWN)]
+row_pins = [
+    Pin(ROW_PINS[0], Pin.OUT),
+    Pin(ROW_PINS[1], Pin.OUT),
+    Pin(ROW_PINS[2], Pin.OUT),
+    Pin(ROW_PINS[3], Pin.OUT)
+]
+
+col_pins = [
+    Pin(COL_PINS[0],Pin.IN, Pin.PULL_DOWN),
+    Pin(COL_PINS[1], Pin.IN, Pin.PULL_DOWN),
+    Pin(COL_PINS[2], Pin.IN, Pin.PULL_DOWN),
+    Pin(COL_PINS[3], Pin.IN, Pin.PULL_DOWN)
+]
 
 def GetKey():
     for r in range(ROWS):

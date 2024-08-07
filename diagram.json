@@ -1,62 +1,56 @@
 {
-  "version": 1,
-  "author": "JubilantMarmot",
-  "editor": "wokwi",
-  "parts": [
-    {
-      "type": "board-pi-pico-w",
-      "id": "pico",
-      "top": 0,
-      "left": 0,
-      "attrs": { "env": "micropython-20231005-v1.21.0" }
-    },
-    {
-      "type": "wokwi-buzzer",
-      "id": "wokwi-buzzer-0",
-      "top": 184.8,
-      "left": -94.2,
-      "attrs": {}
-    },
-    {
-      "type": "wokwi-membrane-keypad",
-      "id": "wokwi-membrane-keypad-0",
-      "top": -222.8,
-      "left": -272.8,
-      "attrs": {}
-    },
-    {
-      "type": "board-ssd1306",
-      "id": "oled1",
-      "top": 137.54,
-      "left": 509.03,
-      "attrs": { "i2cAddress": "0x3c" }
-    },
-    {
-      "type": "wokwi-servo",
-      "id": "servo1",
-      "top": 132.4,
-      "left": 268.8,
-      "attrs": { "horn": "double" }
-    }
-  ],
-  "connections": [
-    ["wokwi-membrane-keypad-0:R1", "pico:GP6", "green", ["v0"]],
-    ["wokwi-membrane-keypad-0:R2", "pico:GP7", "green", ["v0"]],
-    ["wokwi-membrane-keypad-0:R3", "pico:GP8", "green", ["v0"]],
-    ["wokwi-membrane-keypad-0:R4", "pico:GP9", "green", ["v0"]],
-    ["wokwi-membrane-keypad-0:C1", "pico:GP10", "green", ["v0"]],
-    ["wokwi-membrane-keypad-0:C2", "pico:GP11", "green", ["v0"]],
-    ["wokwi-membrane-keypad-0:C3", "pico:GP12", "green", ["v0"]],
-    ["wokwi-membrane-keypad-0:C4", "pico:GP13", "green", ["v0"]],
-    ["wokwi-buzzer-0:2", "pico:GP15", "red", ["v0"]],
-    ["wokwi-buzzer-0:1", "pico:GND.4", "black", ["v0"]],
-    ["pico:3V3", "oled1:VCC", "red", ["h0"]],
-    ["pico:GND.8", "oled1:GND", "black", ["h0"]],
-    ["oled1:SCL", "pico:GP1", "green", ["v-48", "h-95.7"]],
-    ["oled1:SDA", "pico:GP0", "green", ["v0"]],
-    ["servo1:GND", "pico:GND.8", "black", ["h0"]],
-    ["servo1:PWM", "pico:GP14", "green", ["h-124.8", "v19.4", "h-9.6"]],
-    ["servo1:V+", "pico:3V3", "red", ["h0"]]
-  ],
-  "dependencies": {}
-}
+	"version": 1,
+	"author": "JubilantMarmot",
+	"editor": "wokwi",
+	"parts": [
+	  {
+		"type": "board-pi-pico-w",
+		"id": "pico",
+		"top": -3.25,
+		"left": -6.05,
+		"attrs": { "env": "micropython-20231005-v1.21.0" }
+	  },
+	  { "type": "wokwi-buzzer", "id": "wokwi-buzzer-0", "top": 69.6, "left": 145.8, "attrs": {} },
+	  {
+		"type": "wokwi-membrane-keypad",
+		"id": "wokwi-membrane-keypad-0",
+		"top": -222.8,
+		"left": -436,
+		"attrs": {}
+	  },
+	  {
+		"type": "board-ssd1306",
+		"id": "oled1",
+		"top": 3.14,
+		"left": -134.17,
+		"attrs": { "i2cAddress": "0x3c" }
+	  },
+	  {
+		"type": "wokwi-servo",
+		"id": "servo1",
+		"top": -2,
+		"left": 249.6,
+		"attrs": { "horn": "double" }
+	  }
+	],
+	"connections": [
+	  [ "wokwi-membrane-keypad-0:R1", "pico:GP6", "green", [ "v0" ] ],
+	  [ "wokwi-membrane-keypad-0:R2", "pico:GP7", "green", [ "v0" ] ],
+	  [ "wokwi-membrane-keypad-0:R3", "pico:GP8", "green", [ "v0" ] ],
+	  [ "wokwi-membrane-keypad-0:R4", "pico:GP9", "green", [ "v0" ] ],
+	  [ "wokwi-membrane-keypad-0:C1", "pico:GP10", "green", [ "v0" ] ],
+	  [ "wokwi-membrane-keypad-0:C2", "pico:GP11", "green", [ "v0" ] ],
+	  [ "wokwi-membrane-keypad-0:C3", "pico:GP12", "green", [ "v0" ] ],
+	  [ "wokwi-membrane-keypad-0:C4", "pico:GP13", "green", [ "v0" ] ],
+	  [ "pico:3V3", "oled1:VCC", "red", [ "h13.46", "v-60.85", "h-172.95" ] ],
+	  [ "servo1:GND", "pico:GND.8", "black", [ "h-134.4", "v-6.35" ] ],
+	  [ "servo1:V+", "pico:3V3", "red", [ "h-163.2", "v-6.25" ] ],
+	  [ "servo1:PWM", "pico:GP28", "orange", [ "v0.2", "h-172.8", "v3.25" ] ],
+	  [ "pico:GND.1", "oled1:GND", "black", [ "h-6.05", "v-51.25", "h-96" ] ],
+	  [ "pico:GP1", "oled1:SCL", "blue", [ "h-6.05", "v-22.45", "h-77.1" ] ],
+	  [ "pico:GP0", "oled1:SDA", "blue", [ "h-6.05", "v-12.85", "h-67.27" ] ],
+	  [ "wokwi-buzzer-0:1", "pico:GND.7", "black", [ "h-86.4", "v-76.8" ] ],
+	  [ "wokwi-buzzer-0:2", "pico:GP27", "blue", [ "v9.6", "h-106", "v-76.8" ] ]
+	],
+	"dependencies": {}
+  }

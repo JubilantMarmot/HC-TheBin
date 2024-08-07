@@ -1,8 +1,7 @@
 from machine import Pin, PWM
 from utime import sleep
 
-BUZZER_PIN = 15
-
+BUZZER_PIN = 27
 buzzer = PWM(Pin(BUZZER_PIN))
 
 def buzz(frequency, duration, duty_cycle):
