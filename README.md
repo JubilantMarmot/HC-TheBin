@@ -55,6 +55,11 @@ The system features:
    - Make sure you have the `ssd1306` library available in your MicroPython environment. You can typically find this library in the MicroPython package repository or online resources.
 
 
+## Images
+
+![](./1.png)
+![](./2.png)
+
 ## `pins.py`
 
 `pins.py` contains the pin definitions for connecting the hardware components:
